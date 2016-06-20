@@ -35,8 +35,17 @@ class GridTest < Minitest::Test
     assert_equal rows, grid.pretty_print
   end
 
-  def test_it_can_find_a_particular_cell
-    #ask the cell for its coordinates
+  def test_it_populates_one_cell_with_correct_corrdinates
+    grid = Grid.new(1)
+    assert_equal [0,0], grid.rows[0][0].coordinates
+  end
+
+  def test_populates_2_by_2_grid_with_coordinates_correctly
+    grid = Grid.new(2)
+    assert_equal [0,0], grid.rows[0][0].coordinates
+    assert_equal [0,1], grid.rows[0][1].coordinates
+    assert_equal [1,0], grid.rows[1][0].coordinates
+    assert_equal [1,1], grid.rows[1][1].coordinates
   end
 
 

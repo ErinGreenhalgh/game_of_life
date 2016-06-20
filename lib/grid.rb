@@ -10,8 +10,8 @@ class Grid
 
   def rows
     grid = []
-    (0...height).each do |i|
-      rows = generate_single_row(i)
+    (0...height).each do |current_row|
+      rows = generate_single_row(current_row)
       grid << rows
     end
     grid
@@ -19,7 +19,7 @@ class Grid
 
   def generate_single_row(current_row)
     row = []
-    (0...height).each do |i|
+    (0...height).each do |current_column|
       row << Cell.new([current_row, current_column], true)
     end
     row
