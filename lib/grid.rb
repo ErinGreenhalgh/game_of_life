@@ -25,4 +25,24 @@ class Grid
     rows
   end
 
+  def display
+    rows.map { |row| row.map { |cell| cell_symbol(cell) } }
+  end
+
+  def cell_symbol(cell)
+    if cell.alive?
+      0
+    else
+      "."
+    end
+  end
+
+  def pretty_print
+    result = ""
+    display.map do |row|
+      result << row.join(" ") + "\n"
+    end
+    result.chomp
+  end
+
 end

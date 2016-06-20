@@ -12,7 +12,6 @@ class GridTest < Minitest::Test
     assert_kind_of Cell, grid.rows[0][0]
   end
 
-
   def test_we_can_create_a_2_by_2
     grid = Grid.new(2)
     assert_equal 4, grid.size
@@ -20,4 +19,20 @@ class GridTest < Minitest::Test
     assert_equal 2, grid.height
     assert_kind_of Cell, grid.rows[1][0]
   end
+
+  def test_it_can_print_grid_representation
+    grid = Grid.new(2)
+    rows = [
+            [0, 0],
+            [0, 0]
+           ]
+    assert_equal rows, grid.display
+  end
+
+  def test_it_pretty_prints_the_grid
+    grid = Grid.new(2)
+    rows = "0 0\n0 0"
+    assert_equal rows, grid.pretty_print
+  end
+
 end
