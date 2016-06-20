@@ -10,19 +10,19 @@ class Grid
 
   def rows
     grid = []
-    height.times do
-      rows = generate_grid_rows
+    (0...height).each do |i|
+      rows = generate_single_row(i)
       grid << rows
     end
     grid
   end
 
-  def generate_grid_rows
-    rows = []
-    height.times do
-      rows << Cell.new(true)
+  def generate_single_row(current_row)
+    row = []
+    (0...height).each do |i|
+      row << Cell.new([current_row, current_column], true)
     end
-    rows
+    row
   end
 
   def display
@@ -44,5 +44,12 @@ class Grid
     end
     result.chomp
   end
+
+  #get/give the coordinates of the cell we are interested in
+  #find out all the cell's neighbors
+  #count # of alive neighbors
+  #based on the rules, change the cell's status
+  #do this for every cell in the grid
+  #render the new grid
 
 end

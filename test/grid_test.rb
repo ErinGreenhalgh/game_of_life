@@ -35,4 +35,10 @@ class GridTest < Minitest::Test
     assert_equal rows, grid.pretty_print
   end
 
+  def test_it_can_find_a_particular_cell
+    #ask the cell for its coordinates
+  end
+
+
+
 end

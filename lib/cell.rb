@@ -1,7 +1,9 @@
 class Cell
+  attr_reader :coordinates
 
-  def initialize(status)
+  def initialize(coordinates, status = true)
     @alive = status
+    @coordinates = coordinates
   end
 
   def alive?
