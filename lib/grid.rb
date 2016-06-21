@@ -25,25 +25,51 @@ class Grid
     row
   end
 
-  def display
-    rows.map { |row| row.map { |cell| cell_symbol(cell) } }
+  def grid_to_symbols
+    rows.map { |row| row.map { |cell| cell_to_symbol(cell) } }
   end
 
-  def cell_symbol(cell)
+  def cell_to_symbol(cell)
     if cell.alive?
-      0
+      "O"
     else
       "."
     end
   end
 
-  def pretty_print
+  def pretty_grid
     result = ""
-    display.map do |row|
+    grid_to_symbols.map do |row|
       result << row.join(" ") + "\n"
     end
     result.chomp
   end
+
+  def find_neighbors(coordinates)
+
+  end
+
+  def theoretical_neighbors(coordinates)
+    find_adjacent_neighbors(coordinates) + find_diagonal_neighbors(coordinates)
+  end
+
+  def find_adjacent_neighbors(coordinates)
+    a = [(coordinates[0] - 1), coordinates[1]]
+    b = [(coordinates[0] + 1), coordinates[1]]
+    c = [coordinates[0], (coordinates[1] - 1)]
+    d = [coordinates[0], (coordinates[1] +1)]
+    [a, b, c, d]
+  end
+
+  def find_diagonal_neighbors(coordinates)
+    a = [(coordinates[0] - 1), (coordinates[1] - 1) ]
+    b = [(coordinates[0] + 1), (coordinates[1] + 1)]
+    c = [(coordinates[0] - 1), (coordinates[1] + 1)]
+    d = [(coordinates[0] + 1), (coordinates[1]  - 1)]
+    [a, b, c, d]
+  end
+
+
 
   #get/give the coordinates of the cell we are interested in
   #find out all the cell's neighbors
